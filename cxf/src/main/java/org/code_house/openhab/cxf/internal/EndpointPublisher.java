@@ -18,14 +18,16 @@ package org.code_house.openhab.cxf.internal;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.extension.ExtensionManagerBus;
-import org.apache.cxf.bus.osgi.CXFActivator;
 import org.apache.cxf.bus.osgi.OSGIBusListener;
+import org.apache.cxf.feature.LoggingFeature;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
+import org.apache.cxf.jaxrs.security.JAASAuthenticationFilter;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -66,7 +68,11 @@ public class EndpointPublisher {
         factoryBean.setBus(bus);
         factoryBean.setAddress("/openhab");
         factoryBean.setServiceBeans(resources);
-        factoryBean.setProvider(new JacksonJsonProvider());
+        JAASAuthenticationFilter filter = new JAASAuthenticationFilter();
+        filter.setContextName("karaf");
+
+        factoryBean.setProviders(Arrays.asList(new JacksonJsonProvider(), filter));
+        factoryBean.setFeatures(Arrays.asList(new LoggingFeature()));
 
         factoryBean.create();
 

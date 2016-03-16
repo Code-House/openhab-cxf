@@ -9,9 +9,12 @@
 
     <repository>mvn:org.code-house.swagger/features/${code-house-swagger.version}/xml/features</repository>
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+    <repository>mvn:org.eclipse.smarthome/karaf/${smarhome.version}/xml/features</repository>
 
     <feature name="openhab-cxf" version="${project.version}">
         <feature version="${cxf.version}">cxf-jaxrs</feature>
+        <feature version="${code-house-swagger.version}">swagger-core</feature>
+        <feature version="${smarhome.version}">esh-base</feature>
         <bundle>mvn:org.code-house.openhab/cxf/${project.version}</bundle>
     </feature>
 

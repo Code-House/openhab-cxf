@@ -28,7 +28,9 @@ public class Activator extends BaseActivator {
     private Thread thread;
 
     @Override
-    protected void doOpen() throws Exception {
+    protected void doStart() throws Exception {
+        super.doStart();
+
         EndpointPublisher endpointPublisher = new EndpointPublisher(bundleContext);
 
         ResourceHolder resourceHolder = new ResourceHolder();
@@ -39,20 +41,14 @@ public class Activator extends BaseActivator {
 
         restResourceTracker = new RestResourceTracker(bundleContext, resourceHolder);
         restResourceTracker.open(true);
-    }
 
-    @Override
-    protected void doStart() throws Exception {
         thread.start();
     }
 
     @Override
     protected void doStop() {
+        super.doStop();
         thread.interrupt();
-    }
-
-    @Override
-    protected void doClose() {
         restResourceTracker.close();
     }
 

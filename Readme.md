@@ -1,4 +1,4 @@
-# OpenHab CXF INtegration
+# OpenHab CXF Integration
 
 Currently OpenHab uses Jersey to launch REST services and custom code to glue things together which attempts to use osgi
 whiteboard pattern for [gluing everything](https://github.com/hstaudacher/osgi-jax-rs-connector/) together. While way it
@@ -12,7 +12,7 @@ Integration test is failing, please ignore it. This feature set will not work on
 
 Requires
 ---
-Karaf 4.x (OpenHab 2.0)
+Karaf 4.2.6 (OpenHab 2.5.0 (M2))
 
 Provides
 ---

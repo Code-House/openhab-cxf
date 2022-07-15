@@ -23,7 +23,7 @@
     <osgi.version>6.0.0</osgi.version>
     <openhab.version>2.5.0-SNAPSHOT</openhab.version>
 
-    <jackson.version>2.9.9</jackson.version>
+    <jackson.version>2.12.6.1</jackson.version>
     <code-house-jackson.version>2.9.0-SNAPSHOT</code-house-jackson.version>
     <code-house-swagger.version>3.0.0-SNAPSHOT</code-house-swagger.version>
 
